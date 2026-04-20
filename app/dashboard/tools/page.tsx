@@ -88,18 +88,6 @@ export default function ToolsPage() {
           );
         })}
       </div>
-
-      {/* Coming Soon Section */}
-      <div className="rounded-xl border border-primary/30 bg-primary/5 p-8 text-center space-y-4">
-        <h2 className="text-2xl font-bold text-foreground">More Tools Coming Soon</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          We're constantly adding new tools to enhance your travel planning experience. 
-          Weather forecasts, activity recommendations, and more are on the way!
-        </p>
-        <Button variant="outline" className="border-primary/30">
-          Suggest a Feature
-        </Button>
-      </div>
     </div>
   );
 }
