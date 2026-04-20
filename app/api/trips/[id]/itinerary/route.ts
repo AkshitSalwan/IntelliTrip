@@ -30,11 +30,24 @@ export async function POST(
       style: body.style,
     });
 
-    // Save itinerary to trip
-    trip.itinerary = itinerary;
+    // Flatten the activities from all days
+    const flattenedActivities = itinerary.days.flatMap(day =>
+      day.activities.map(activity => ({
+        id: `${day.day}-${activity.time}-${activity.activity}`.replace(/\s+/g, '-').toLowerCase(),
+        day: day.day,
+        title: activity.activity,
+        description: activity.description,
+        time: activity.time,
+        location: activity.location || body.destination,
+        category: 'Sightseeing',
+      }))
+    );
+
+    // Save flattened activities to trip
+    trip.itinerary = flattenedActivities;
     await trip.save();
 
-    return NextResponse.json(itinerary);
+    return NextResponse.json(flattenedActivities);
   } catch (error) {
     console.error('Error generating itinerary:', error);
     return NextResponse.json(

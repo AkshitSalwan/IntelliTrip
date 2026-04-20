@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { TripForm } from '@/components/dashboard/trip-form';
 
 export default function NewTripPage() {
@@ -10,7 +11,9 @@ export default function NewTripPage() {
         </p>
       </div>
 
-      <TripForm />
+      <Suspense fallback={<div>Loading...</div>}>
+        <TripForm />
+      </Suspense>
     </div>
   );
 }

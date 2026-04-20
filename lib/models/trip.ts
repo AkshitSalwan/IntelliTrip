@@ -9,13 +9,13 @@ export interface ITripMember {
 }
 
 export interface ITripActivity {
+  id: string
   day: number
   title: string
   description: string
-  startTime: string
-  endTime: string
+  time: string
   location: string
-  cost: number
+  category: string
 }
 
 export interface ITripMemory {
