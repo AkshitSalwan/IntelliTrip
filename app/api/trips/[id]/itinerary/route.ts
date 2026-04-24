@@ -47,12 +47,26 @@ export async function POST(
     trip.itinerary = flattenedActivities;
     await trip.save();
 
-    return NextResponse.json(flattenedActivities);
-  } catch (error) {
-    console.error('Error generating itinerary:', error);
+    return NextResponse.json({
+      success: true,
+      data: flattenedActivities,
+      message: 'Itinerary generated successfully'
+    });
+  } catch (error: any) {
+    console.error('Error generating itinerary:', error?.message);
+    
+    // Check if it's a quota error
+    const isQuotaError = error?.statusCode === 429 || error?.message?.includes('quota');
+    
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { 
+        error: isQuotaError 
+          ? 'API quota exceeded. Using template itinerary.' 
+          : 'Error generating itinerary. Please try again.',
+        isQuotaError,
+        message: error?.message || 'Internal server error'
+      },
+      { status: isQuotaError ? 200 : 500 }
     );
   }
 }
