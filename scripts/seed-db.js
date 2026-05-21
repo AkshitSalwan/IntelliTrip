@@ -1,6 +1,15 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../.env.local') });
+
+const envPaths = ['.env.local', '.env', '.env.example']
+  .map((filename) => path.join(__dirname, '..', filename))
+  .filter((filepath) => fs.existsSync(filepath));
+
+if (envPaths.length > 0) {
+  require('dotenv').config({ path: envPaths[0] });
+  console.log(`Loaded environment variables from ${path.basename(envPaths[0])}`);
+}
 
 // Connection string
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -138,7 +147,7 @@ const cityImageSchema = new mongoose.Schema({
       description: String,
       imageType: {
         type: String,
-        enum: ['Landmarks', 'Street Views', 'Parks', 'Food Scenes', 'Cultural Sites'],
+        enum: ['landmark', 'street', 'park', 'food', 'culture', 'architecture'],
       },
     },
   ],
@@ -391,31 +400,31 @@ const sampleCityImages = [
         url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500',
         title: 'Eiffel Tower',
         description: 'The iconic Eiffel Tower at night',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
       {
         url: 'https://images.unsplash.com/photo-1550340579-c1be6bd58e9e?w=500',
         title: 'Louvre Museum',
         description: 'The magnificent Louvre glass pyramid',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
       {
         url: 'https://images.unsplash.com/photo-1555950669-1b667a9e48b0?w=500',
         title: 'Café au Lait',
         description: 'Traditional French café culture',
-        imageType: 'Food Scenes',
+        imageType: 'food',
       },
       {
         url: 'https://images.unsplash.com/photo-1508874099435-d3f5a0cea3f5?w=500',
         title: 'Seine River',
         description: 'Scenic views of the Seine',
-        imageType: 'Street Views',
+        imageType: 'street',
       },
       {
         url: 'https://images.unsplash.com/photo-1497442671051-4b57f50f9f1d?w=500',
         title: 'Notre-Dame',
         description: 'The historic Notre-Dame Cathedral',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
     ],
   },
@@ -427,31 +436,31 @@ const sampleCityImages = [
         url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500',
         title: 'Tokyo Tower',
         description: 'Iconic Tokyo Tower skyline',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
       {
         url: 'https://images.unsplash.com/photo-1540959375944-7049f642e9a0?w=500',
         title: 'Senso-ji Temple',
         description: 'Ancient temple in Asakusa',
-        imageType: 'Cultural Sites',
+        imageType: 'culture',
       },
       {
         url: 'https://images.unsplash.com/photo-1579769726051-4e042af0a77c?w=500',
         title: 'Sushi Paradise',
         description: 'Fresh sushi and Japanese cuisine',
-        imageType: 'Food Scenes',
+        imageType: 'food',
       },
       {
         url: 'https://images.unsplash.com/photo-1522383630252-895f97e5edfb?w=500',
         title: 'Shibuya Crossing',
         description: 'The world\'s busiest crossing',
-        imageType: 'Street Views',
+        imageType: 'street',
       },
       {
         url: 'https://images.unsplash.com/photo-1598639957487-b51db56de189?w=500',
         title: 'Shinjuku Park',
         description: 'Beautiful urban park',
-        imageType: 'Parks',
+        imageType: 'park',
       },
     ],
   },
@@ -463,31 +472,31 @@ const sampleCityImages = [
         url: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500',
         title: 'Statue of Liberty',
         description: 'Symbol of freedom and democracy',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
       {
         url: 'https://images.unsplash.com/photo-1513581171538-c3ce00202914?w=500',
         title: 'Times Square',
         description: 'Bright lights of Times Square',
-        imageType: 'Street Views',
+        imageType: 'street',
       },
       {
         url: 'https://images.unsplash.com/photo-1555939594-58d7cb561d1f?w=500',
         title: 'NYC Pizza',
         description: 'Authentic New York pizza',
-        imageType: 'Food Scenes',
+        imageType: 'food',
       },
       {
         url: 'https://images.unsplash.com/photo-1502515917235-de2e36394c1e?w=500',
         title: 'Central Park',
         description: 'Iconic Central Park landscape',
-        imageType: 'Parks',
+        imageType: 'park',
       },
       {
         url: 'https://images.unsplash.com/photo-1508872087620-c8707b9d4ffd?w=500',
         title: 'Grand Central Terminal',
         description: 'Historic train station interior',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
     ],
   },
@@ -499,31 +508,31 @@ const sampleCityImages = [
         url: 'https://images.unsplash.com/photo-1562883676-8c6fbdf76c91?w=500',
         title: 'Sagrada Familia',
         description: 'Gaudí\'s masterpiece basilica',
-        imageType: 'Landmarks',
+        imageType: 'landmark',
       },
       {
-        url: 'https://images.unsplash.com/photo-1549879534-7da47696dcf0?w=500',
+        url: 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=500',
         title: 'Barcelona Beach',
         description: 'Beautiful Mediterranean beach',
-        imageType: 'Parks',
+        imageType: 'park',
       },
       {
-        url: 'https://images.unsplash.com/photo-1555939594-58d7cb561d1f?w=500',
+        url: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500',
         title: 'Tapas Culture',
         description: 'Spanish tapas and wine',
-        imageType: 'Food Scenes',
+        imageType: 'food',
       },
       {
-        url: 'https://images.unsplash.com/photo-1549879534-7da47696dcf0?w=500',
+        url: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=500',
         title: 'Gothic Quarter Streets',
         description: 'Narrow streets of the Gothic Quarter',
-        imageType: 'Street Views',
+        imageType: 'street',
       },
       {
-        url: 'https://images.unsplash.com/photo-1562883676-8c6fbdf76c91?w=500',
+        url: 'https://images.unsplash.com/photo-1505577058444-a3dabdd60c0b?w=500',
         title: 'Park Güell',
         description: 'Gaudí\'s iconic park with mosaic art',
-        imageType: 'Landmarks',
+        imageType: 'architecture',
       },
     ],
   },

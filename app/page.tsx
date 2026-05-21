@@ -1,4 +1,4 @@
-import { SignUp } from '@clerk/nextjs';
+﻿import { SignUp } from '@clerk/nextjs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -69,9 +69,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen gradient-primary-to-accent">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 border-b border-teal-200/50 bg-white/60 backdrop-blur-md">
+      <nav className="sticky top-0 z-50 border-b border-teal-200/50 bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
           <div className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">
             IntelliTrip
@@ -90,7 +90,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: 'linear-gradient(135deg, rgba(147,51,234,0.4) 0%, rgba(196,181,253,0.4) 100%), url(https://images.pexels.com/photos/2398220/pexels-photo-2398220.jpeg)',
+            backgroundImage: 'linear-gradient(135deg, rgba(56,189,248,0.35) 0%, rgba(45,212,191,0.35) 100%), url(https://images.pexels.com/photos/2398220/pexels-photo-2398220.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -122,18 +122,18 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="px-4 py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="px-4 py-16 bg-gradient-to-r from-cyan-50 to-teal-100">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 md:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center card-soft">
-                <div className="inline-flex rounded-full bg-gradient-to-br from-pink-200 to-purple-200 p-4 mb-4">
-                  <stat.icon className="h-6 w-6 text-purple-700" />
+              <div key={stat.label} className="text-center card-soft p-6 min-h-[16rem]">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyan-100 to-teal-200 p-3 mb-5">
+                  <stat.icon className="h-6 w-6 text-teal-700" />
                 </div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
                   {stat.value}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+                <p className="text-sm text-muted-foreground mt-3">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -155,50 +155,57 @@ export default function Home() {
                 icon: Zap,
                 title: 'AI Itineraries',
                 description: 'Get intelligent itineraries based on your preferences and travel style',
-                color: 'from-pink-200 to-purple-200',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: DollarSign,
                 title: 'Budget Tracking',
                 description: 'Monitor expenses in real-time and stay within your budget',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Map,
                 title: 'Smart Planning',
                 description: 'Adaptive planning that evolves with your trip and preferences',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Users,
                 title: 'Collaboration',
                 description: 'Plan together with friends and family in real-time',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Compass,
                 title: 'Explore Destinations',
                 description: 'Discover hidden gems and local recommendations',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Clock,
                 title: 'Time Management',
                 description: 'Optimize your schedule for the best experience',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Star,
                 title: 'Trip Reviews',
                 description: 'Share memories and rate your experiences',
+                color: 'from-cyan-100 to-teal-200',
               },
               {
                 icon: Globe,
                 title: 'Global Reach',
                 description: 'Plan trips to 190+ countries worldwide',
+                color: 'from-cyan-100 to-teal-200',
               },
             ].map((feature) => (
               <div
                 key={feature.title}
-                className="card-soft group border-purple-200/50 hover-lift transition-all"
+                className="card-soft group border-teal-200/50 hover-lift transition-all p-6 min-h-[18rem]"
               >
-                <div className={`mb-4 inline-flex rounded-full bg-gradient-to-br ${feature.color || 'from-purple-200 to-pink-200'} p-3`}>
-                  <feature.icon className="h-6 w-6 text-purple-700" />
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${feature.color || 'from-cyan-100 to-teal-200'} p-3`}>
+                  <feature.icon className="h-5 w-5 text-teal-700" />
                 </div>
                 <h3 className="mb-2 font-semibold text-foreground">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -209,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* Destination Carousel Section */}
-      <section className="px-4 py-20 bg-gradient-to-b from-transparent to-purple-50/30">
+      <section className="px-4 py-20 bg-gradient-to-b from-transparent to-cyan-50/30">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-4 text-center text-4xl font-bold text-foreground">
             Explore Popular Destinations
@@ -289,7 +296,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="px-4 py-20 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="px-4 py-20 bg-gradient-to-r from-cyan-50 to-teal-100">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-16 text-center text-4xl font-bold text-foreground">
             How It Works
@@ -303,7 +310,7 @@ export default function Home() {
             ].map((item) => (
               <div key={item.step} className="flex flex-col items-center">
                 {/* Number circle */}
-                <div className="mb-6 h-20 w-20 rounded-full bg-gradient-to-br from-pink-300 to-purple-300 flex items-center justify-center shadow-lg flex-shrink-0">
+                <div className="mb-6 h-20 w-20 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
                   <span className="text-3xl font-bold text-white">{item.step}</span>
                 </div>
                 {/* Content card */}
@@ -340,29 +347,29 @@ export default function Home() {
       </section>
 
       {/* Enhanced Footer */}
-      <footer className="border-t border-teal-200/50 bg-gradient-to-b from-purple-900 via-purple-800 to-gray-900 text-white">
+      <footer className="border-t border-cyan-700/50 bg-gradient-to-b from-teal-950 via-cyan-900 to-slate-950 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16">
           {/* Main Footer Content */}
           <div className="grid gap-8 md:grid-cols-5 mb-12">
             {/* Brand Section */}
             <div className="col-span-1">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-4">
                 IntelliTrip
               </h3>
-              <p className="text-sm text-purple-200 mb-6">
+              <p className="text-sm text-cyan-200 mb-6">
                 Your AI-powered travel companion for perfect journeys
               </p>
               <div className="flex gap-4">
-                <Link href="#" className="hover:text-pink-400 transition-colors">
+                <Link href="#" className="hover:text-cyan-300 transition-colors">
                   <Facebook className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="hover:text-pink-400 transition-colors">
+                <Link href="#" className="hover:text-cyan-300 transition-colors">
                   <Twitter className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="hover:text-pink-400 transition-colors">
+                <Link href="#" className="hover:text-cyan-300 transition-colors">
                   <Instagram className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="hover:text-pink-400 transition-colors">
+                <Link href="#" className="hover:text-cyan-300 transition-colors">
                   <Linkedin className="h-5 w-5" />
                 </Link>
               </div>
@@ -414,19 +421,19 @@ export default function Home() {
           </div>
 
           {/* Newsletter Section */}
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg border border-purple-400/30 p-6 mb-12">
+          <div className="bg-gradient-to-r from-cyan-500/10 to-teal-500/10 rounded-lg border border-cyan-400/30 p-6 mb-12">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <h4 className="font-semibold text-white mb-2">Subscribe to Our Newsletter</h4>
-                <p className="text-sm text-purple-300">Get travel tips, destination guides, and exclusive offers</p>
+                <p className="text-sm text-cyan-200">Get travel tips, destination guides, and exclusive offers</p>
               </div>
               <div className="flex gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="px-4 py-2 rounded-lg bg-purple-900/50 border border-purple-400/30 text-white placeholder-purple-400 focus:outline-none focus:border-pink-400"
+                  className="px-4 py-2 rounded-lg bg-slate-900/60 border border-cyan-400/30 text-white placeholder-cyan-300 focus:outline-none focus:border-cyan-300"
                 />
-                <Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+                <Button className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600">
                   Subscribe
                 </Button>
               </div>
@@ -436,43 +443,43 @@ export default function Home() {
           {/* Contact Info */}
           <div className="grid gap-6 md:grid-cols-3 mb-12">
             <div className="flex items-start gap-3">
-              <Mail className="h-5 w-5 text-pink-400 mt-1 flex-shrink-0" />
+              <Mail className="h-5 w-5 text-cyan-300 mt-1 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-white">Email</p>
-                <p className="text-sm text-purple-300">support@intellitrip.com</p>
+                <p className="text-sm text-cyan-200">support@intellitrip.com</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Phone className="h-5 w-5 text-pink-400 mt-1 flex-shrink-0" />
+              <Phone className="h-5 w-5 text-cyan-300 mt-1 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-white">Phone</p>
-                <p className="text-sm text-purple-300">+1 (555) 123-4567</p>
+                <p className="text-sm text-cyan-200">+1 (555) 123-4567</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <MapPinIcon className="h-5 w-5 text-pink-400 mt-1 flex-shrink-0" />
+              <MapPinIcon className="h-5 w-5 text-cyan-300 mt-1 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-white">Address</p>
-                <p className="text-sm text-purple-300">123 Travel Street, San Francisco, CA</p>
+                <p className="text-sm text-cyan-200">123 Travel Street, San Francisco, CA</p>
               </div>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="border-t border-purple-700 pt-8">
+          <div className="border-t border-cyan-700 pt-8">
             {/* Bottom Footer */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <p className="text-sm text-purple-300">
+              <p className="text-sm text-cyan-200">
                 &copy; 2024 IntelliTrip. All rights reserved.
               </p>
               <div className="flex gap-6">
-                <Link href="#" className="text-sm text-purple-300 hover:text-pink-400 transition-colors">
+                <Link href="#" className="text-sm text-cyan-200 hover:text-cyan-300 transition-colors">
                   Sitemap
                 </Link>
-                <Link href="#" className="text-sm text-purple-300 hover:text-pink-400 transition-colors">
+                <Link href="#" className="text-sm text-cyan-200 hover:text-cyan-300 transition-colors">
                   Status
                 </Link>
-                <Link href="#" className="text-sm text-purple-300 hover:text-pink-400 transition-colors">
+                <Link href="#" className="text-sm text-cyan-200 hover:text-cyan-300 transition-colors">
                   Changelog
                 </Link>
               </div>
