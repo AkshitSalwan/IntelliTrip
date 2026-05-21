@@ -2,6 +2,7 @@
 
 import { Share2, Download, Star, MapPin, Calendar, Users, DollarSign, Cloud } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PublishTripButton } from './publish-trip-button';
 
 interface TripSummaryProps {
   trip: any;
@@ -67,7 +68,7 @@ export function TripSummary({ trip }: TripSummaryProps) {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         <Button onClick={handleExportPDF} className="btn-gradient gap-2">
           <Download className="h-4 w-4" />
           Export PDF
@@ -76,6 +77,7 @@ export function TripSummary({ trip }: TripSummaryProps) {
           <Share2 className="h-4 w-4" />
           Share Trip
         </Button>
+        <PublishTripButton tripId={trip._id} />
       </div>
 
       {/* Recommendations */}

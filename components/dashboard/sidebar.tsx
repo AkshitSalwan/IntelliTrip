@@ -13,6 +13,9 @@ import {
   Globe,
   Wrench,
   Sparkles,
+  Heart,
+  BookOpen,
+  Share2,
 } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
 
@@ -21,6 +24,9 @@ const menuItems = [
   { name: 'My Trips', href: '/dashboard/trips', icon: Map },
   { name: 'Destinations', href: '/dashboard/destinations', icon: Globe },
   { name: 'Surprise Me', href: '/dashboard/surprise-me', icon: Sparkles },
+  { name: 'Bucket List', href: '/dashboard/bucket-list', icon: BookOpen },
+  { name: 'Passport', href: '/dashboard/passport', icon: Heart },
+  { name: 'Social Feed', href: '/dashboard/social', icon: Share2 },
   { name: 'Tools', href: '/dashboard/tools', icon: Wrench },
   { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
   { name: 'Packing List', href: '/dashboard/packing-list', icon: Backpack },

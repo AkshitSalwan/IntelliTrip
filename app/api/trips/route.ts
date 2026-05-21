@@ -3,6 +3,7 @@ import { connectDB } from '@/lib/db';
 import { Trip } from '@/lib/models/trip';
 import { User } from '@/lib/models/user';
 import { NextResponse } from 'next/server';
+import { getUserId } from '@/lib/dev-utils';
 
 function normalizeTravelStyle(value: string) {
   const style = value?.toLowerCase();
@@ -14,7 +15,9 @@ function normalizeTravelStyle(value: string) {
 
 export async function POST(request: Request) {
   try {
-    const { userId } = await auth();
+    const { userId: clerkUserId } = await auth();
+    const userId = getUserId(clerkUserId);
+    
     if (!userId) {
       return NextResponse.json(
         { error: 'Unauthorized' },
@@ -106,7 +109,9 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
-    const { userId } = await auth();
+    const { userId: clerkUserId } = await auth();
+    const userId = getUserId(clerkUserId);
+    
     if (!userId) {
       return NextResponse.json(
         { error: 'Unauthorized' },

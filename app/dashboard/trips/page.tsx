@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { TripCard } from '@/components/dashboard/trip-card';
 import { Plus } from 'lucide-react';
+import { getUserId } from '@/lib/dev-utils';
 
 async function getUserTrips(userId: string) {
   try {
@@ -19,11 +20,13 @@ async function getUserTrips(userId: string) {
 
 export default async function TripsPage() {
   const user = await currentUser();
-  if (!user?.id) {
+  const userId = getUserId(user?.id || null);
+  
+  if (!userId) {
     return null;
   }
 
-  const trips = await getUserTrips(user.id);
+  const trips = await getUserTrips(userId);
 
   return (
     <div className="space-y-8">
